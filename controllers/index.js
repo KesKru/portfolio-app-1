@@ -1,45 +1,20 @@
-//-----------------------Modules-----------------------//
-const path = require('path');
-const jwt = require('jsonwebtoken');
+'use strict';
 
-//-----------------------Models-----------------------//
-const md = require('../models/index');
-//-----------------------Controlers-----------------------//
-module.exports = {
-  // User | 'users/login' | Login user, create session.
-  login: (req, res) => {
-    const { email, password } = req.body;
-    md.User.findOne({ email: email }).then((user) => {
-      if (!user) {
-        return res.json({ message: "User doesn't exist" });
-      } else {
-        user
-          .comparePassword(password)
-          .then((match) => {
-            if (match) {
-              jwt.sign(
-                {
-                  id: user.id,
-                  email: user.email
-                },
-                'secret123',
-                { expiresIn: 60 },
-                (err, token) => {
-                  res.json({
-                    success: true,
-                    token: 'Bearer ' + token
-                  });
-                }
-              );
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    });
-  },
-  logout: (req, res) => {
-    res.send('logout');
-  }
-};
+const fs = require('fs');
+const path = require('path');
+const basename = path.basename(__filename);
+const cont = {};
+
+fs.readdirSync(__dirname)
+  .filter((file) => {
+    return (
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+    );
+  })
+  .forEach((file) => {
+    const controller = require(path.join(__dirname, file));
+    file = file.slice(0, file.length - 3);
+    cont[file] = controller;
+  });
+
+module.exports = cont;

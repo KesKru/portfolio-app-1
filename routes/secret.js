@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/comments', function(req, res) {
-  res.render('comments/index');
+const cont = require('../controllers');
+
+router.get('/secret', cont.auth.isLoggedIn, function(req, res) {
+  res.render('secret');
 });
 
 //--------------------------

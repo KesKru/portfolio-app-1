@@ -25,6 +25,9 @@ module.exports = {
     });
   },
 
+  showCreateUserForm: (req, res) => {
+    res.render('register');
+  },
   createUser: (req, res) => {
     const newUser = new md.User({
       name: req.body.name,
