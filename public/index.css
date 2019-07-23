@@ -2,7 +2,11 @@ body {
   background: rgb(252, 252, 252);
   margin: 0;
 }
-nav {
+nav , footer {
   background: rgb(228, 228, 228);
   padding: 10px;
+}
+a {
+  margin-right: 10px;
+  text-decoration: none;
 }
