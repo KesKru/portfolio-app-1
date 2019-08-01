@@ -1,6 +1,6 @@
-# Portfolio-app-spec
+# App-1-spec
 
-A short overview of Functional, Design and Technical specifications for this app. This is a full stack Yelp style application, with simplified functionality,- to demonstrate working knowledge of EJS-jQuery-Bootstrap + Node-Express-MongoDB technology stack.
+A short overview of Functional, Design and Technical specifications for this app.
 
 ## Functional spec:
 
