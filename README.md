@@ -1,17 +1,1 @@
-# portfolio-app-1
-
-This will be Yelp style app.
-
-## Spec
-
-### Functional spec
-
-...
-
-### Design spec
-
-...
-
-### Technical spec
-
-...
+This is a front-end AJAX application to represent a fictional local business. It will demonstrate working knowledge of vanillaJS-vanillaCSS front-end + WordPress REST API back-end technology stack.
