@@ -7,7 +7,7 @@ That will be done by building a representational website for a fictional online 
 
 ## Functional spec:
 
-- Functionality:
+Functionality:
 
 - User register/login/update functionality.
 - Personalized pages for logged in users.
