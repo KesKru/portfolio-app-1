@@ -17,19 +17,30 @@ Functionality:
 - Admin panel for content management and statistics.
 - Responsive front-end design.
 
+Site pages and their functions:
+
+```sh
+Home                 # Landing page.
+|
+|- Register/login    # Register/login functionality
+|
+|- Admin panel*      # Content management and statistics (for shop owner).
+|
+|- User info*        # User account info/updates
+|
+|- Shop items        # Shop inventory.
+|
+|- Shopping cart     # Shopping cart/payments
+|
+|- About/Contacts    # Information about the company/contacts
+
+
+* - These pages are private and require user login.
+```
+
 ## Design spec:
 
 TDB
-
-<!-- Color scheme and font:
-
-Pages and their design:
-
-- Landing
-- Login/Register
-- ...
-
-![alt text](./img/landing.png 'Logo Title Text 1') -->
 
 ## Technical spec:
 
@@ -37,11 +48,11 @@ Pages and their design:
 
 Views:
 
-- EJS templating with jQuery for AJAX.
+- EJS templating and jQuery.
 
 Styling:
 
-- Bootstrap with custom SCSS variables overrides for styling.
+- Custom version of Bootstrap.
 
 ### Back End
 
