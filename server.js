@@ -1,37 +1,29 @@
-//-----------------------Modules-----------------------//
-
+//-----------------------Imports-----------------------//
+require('dotenv').config();
 const express = require('express'); // include express module
-const app = express(); // create an express instance
+const app = express(); // create express instance
 const cors = require('cors');
-const session = require('express-session');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const passportConfig = require('./config/passportConfig');
-const sessionConfig = require('./config/sessionConfig');
-// Models
-const User = require('./models/User');
-// Routes
-const routes = require('./routes/index');
 
 //-----------------------Config-----------------------//
 
 // Database
-require('./config/databaseConfig'); // load and run db config
-
+require('./config/databaseConfig')(); // load and use db config
 // View engine
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-
-// Middleware
+// Middleware / Configs
 app.use(cors()); // Alow Cross-origin resource sharing
 app.use(express.urlencoded({ extended: true })); // parse form data
 app.use(express.json()); // parse json data
-sessionConfig(app, session); //load session config
-passportConfig(app, passport, LocalStrategy, User); // load passport config
+app.use(require('./config/sessionConfig')); // Session config
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passportConfig')(); // passport config
 
 // Routes
-app.use(routes);
-app.get('*', (req, res) => res.send('Page does not exist :('));
+app.use(require('./routes/index'));
+app.get('*', (req, res) => res.json('Route does not exist :('));
 
 //-----------------------Start server-----------------------//
 

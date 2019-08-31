@@ -1,10 +1,8 @@
-module.exports = (app, session) => {
-  app.use(
-    session({
-      name: 'session-id',
-      secret: '123-456-789',
-      saveUninitialized: false,
-      resave: false
-    })
-  );
-};
+const session = require('express-session');
+
+module.exports = session({
+  name: 'session-id',
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: false,
+  resave: false
+});

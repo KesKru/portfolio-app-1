@@ -1,25 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../controllers/auth'); // users routes controllers
+const contAuth = require('../controllers/auth'); // users routes controllers
 const passport = require('passport');
 
 //Display Login form
-router.get('/login', auth.loginForm);
+router.get('/login', contAuth.loginForm);
+//Login form user
+router.post('/login', passport.authenticate('local'), contAuth.login);
 
-//Login
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureRedirect: '/fail',
-    successRedirect: '/'
-  })
-);
-
-// Demo secret page
-router.get('/secret', auth.isLoggedIn, (req, res) => {
+// Demo secret route for testing.
+router.get('/secret', contAuth.isLoggedIn, (req, res) => {
   res.send('secret');
 });
-
-router.get('/fail', auth.fail);
 
 module.exports = router;
